@@ -1,10 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap");
 body {
-  text-align: center;
   background-image: url(/images/bg-pattern-bottom-desktop.svg), url(/images/bg-pattern-top-desktop.svg);
   background-repeat: no-repeat;
+  background-position-x: right, left;
   margin: 117px 165px;
+  text-align: center;
   font-family: "League Spartan", sans-serif;
+}
+@media (width < 750px) {
+  body {
+    width: 375px;
+    background-image: url(/images/bg-pattern-top-mobile.svg), url(/images/bg-pattern-bottom-mobile.svg);
+    background-repeat: no-repeat;
+    background-position-x: left, right;
+    background-position-y: top, bottom;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    margin: 82px 24px;
+  }
 }
 
 .top-section {
@@ -22,11 +36,22 @@ body {
   line-height: 48px;
   width: 14ch;
 }
+@media (width < 750px) {
+  .top-section h1 {
+    font-size: 40px;
+  }
+}
 .top-section p {
   font-size: 19px;
   font-weight: 400;
   line-height: 25px;
   width: 40ch;
+}
+@media (width < 750px) {
+  .top-section p {
+    font-size: 19px;
+    width: 30ch;
+  }
 }
 .top-section .ratings {
   display: flex;
@@ -45,22 +70,52 @@ body {
   font-size: 17px;
   font-weight: 700;
 }
+@media (width < 750px) {
+  .top-section .ratings .stars {
+    width: 327px;
+    height: 78px;
+    background-position: 50%, calc(50% - 20px), calc(50% - 40px), calc(50% + 20px), calc(50% + 40px);
+    background-position-y: 12px;
+  }
+}
 .top-section .ratings .stars p {
   position: relative;
-  left: 160px;
+  top: 20px;
+  /* margin: 0px; */
+  /* padding: 0px; */
 }
-.top-section .ratings .stars-2 {
-  position: relative;
-  translate: 48px;
+@media (width > 750px) {
+  .top-section .ratings .stars p {
+    position: relative;
+    left: 160px;
+    top: 0px;
+  }
 }
-.top-section .ratings .stars-3 {
-  position: relative;
-  translate: 96px;
+@media (width > 750px) {
+  .top-section .ratings .stars-2 {
+    position: relative;
+    translate: 48px;
+  }
+  .top-section .ratings .stars-3 {
+    position: relative;
+    translate: 96px;
+  }
+}
+@media (width < 750px) {
+  .top-section {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 .bot-section {
   display: flex;
   gap: 30px;
+}
+@media (width < 750px) {
+  .bot-section {
+    flex-direction: column;
+  }
 }
 .bot-section .card {
   background-color: hsl(300deg, 43%, 22%);
@@ -71,31 +126,53 @@ body {
   border: none;
   text-align: left;
   width: 286px;
-  /* display : flex; 
-  flex-wrap: wrap; 
-  > * {
-      flex: 1 1 50%; 
-  } */
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-areas: "picture name" "picture verified" "comment comment";
 }
-.bot-section .card > * {
-  width: fit-content;
+.bot-section .card h2,
+.bot-section .card h3,
+.bot-section .card p {
+  margin: 0px;
 }
-.bot-section h2 {
+.bot-section .card h2 {
   font-weight: 700;
   font-size: 17px;
+  grid-area: name;
+  align-self: flex-end;
 }
-.bot-section h3 {
+.bot-section .card h3 {
   font-weight: 400;
   font-size: 17px;
   color: hsl(333deg, 80%, 67%);
+  grid-area: verified;
 }
-.bot-section p {
+.bot-section .card p {
   font-weight: 500;
   font-size: 17px;
   letter-spacing: -0.3px;
   line-height: 22px;
+  grid-area: comment;
+}
+.bot-section .card img {
+  grid-area: picture;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  align-self: center;
+  justify-self: left;
+}
+@media (width < 750px) {
+  .bot-section .card {
+    width: 263px;
+  }
+}
+.bot-section .card .irene {
+  top: 24px;
+}
+.bot-section .card .anne {
+  top: 48px;
 }
 
 /*# sourceMappingURL=styles.css.map */
